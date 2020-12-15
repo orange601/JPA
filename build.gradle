@@ -1,0 +1,51 @@
+plugins {
+    id "java"
+    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+}
+
+group "com.orange"
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile("javax.annotation:javax.annotation-api:1.3.2")
+	
+	compile("com.querydsl:querydsl-jpa:4.2.1")
+	compileOnly("com.querydsl:querydsl-apt:4.2.1:jpa")
+	compile("org.hibernate:hibernate-entitymanager:5.4.2.Final")
+	annotationProcessor(
+		"javax.annotation:javax.annotation-api:1.3.2",
+		"javax.persistence:javax.persistence-api:2.2",
+		"com.querydsl:querydsl-apt:4.2.1:jpa"
+	)
+	
+	// https://mvnrepository.com/artifact/com.h2database/h2
+	compile group: 'com.h2database', name: 'h2', version: '1.4.200'
+	
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
+}
+
+// Querydsl이 생성하는 QClass들의 경로를 설정한다.
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+    jpa = true
+    querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+    main.java.srcDir querydslDir
+}
+
+// gradle 5이상
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}

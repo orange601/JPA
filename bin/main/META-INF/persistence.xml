@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.2">
+<!-- 	<persistence-unit name="main1"> -->
+<!-- 		<class>com.orange.querydsl.practice.entity.Member</class> -->
+<!-- 		<properties> -->
+			<!-- 필수 속성 -->
+<!-- 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" /> -->
+<!-- 			<property name="javax.persistence.jdbc.user" value="sa" /> -->
+<!-- 			<property name="javax.persistence.jdbc.password" value="" /> -->
+<!-- 			<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test" /> -->
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" /> -->
+
+			<!-- 옵션 -->
+<!-- 			<property name="hibernate.show_sql" value="true" /> -->
+<!-- 			<property name="hibernate.format_sql" value="true" /> -->
+<!-- 			<property name="hibernate.use_sql_comments" value="true" /> -->
+<!-- 			<property name="hibernate.id.new_generator_mappings" value="true" /> -->
+
+			<!-- 테이블 자동 생성 -->
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
+			<!-- 이름 매핑 전략 변경 -->
+<!-- 			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" /> -->
+<!-- 		</properties> -->
+<!-- 	</persistence-unit> -->
+
+	<!-- 로컬tx = DB1, 글로벌tx  = DB 여러개를 하나의 트랜잭션 처리 -->
+	<persistence-unit name="main" transaction-type="RESOURCE_LOCAL">
+        <description>Persistence unit for the JPA tutorial of the Hibernate Getting Started Guide</description>
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>org.halyph.sessiondemo.Event</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.0.21:3306/chunlima_sales?characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;allowMultiQueries=true" />
+            <property name="javax.persistence.jdbc.user" value="test02" />
+            <property name="javax.persistence.jdbc.password" value="cjsfl1#" />
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+            <property name="hibernate.show_sql" value="true" />
+<!--             <property name="hibernate.hbm2ddl.auto" value="create" /> -->
+        </properties>
+    </persistence-unit>
+    
+</persistence>
