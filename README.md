@@ -12,10 +12,10 @@ QueryDSL
 - ntity 전체를 가져오는 방법 말고, 조회 대상을 지정하여 원하는 값만 조회하는 것
 - 프로젝션 대상이 하나일 경우에는 반환되는 타입이 프로젝션 대상의 타입입니다.
 ````java
-	public List<String> findWbs(){
-		return jpaQueryFactory
-				.select(wbs.pjtCd)
-				.from(wbs)
-				.fetch();
-	}
+public List<String> findWbs(){
+	return jpaQueryFactory
+		.select(wbs.pjtCd)
+		.from(wbs)
+		.fetch();
+}
 ````
