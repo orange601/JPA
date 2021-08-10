@@ -125,3 +125,34 @@ public void simpleProjectionTest() {
                 });
     }
 ````
+
+## 이름으로 검색 + 정렬 + 페이징 ##
+https://ict-nroo.tistory.com/117
+
+````java
+public interface MemberRepository extends JpaRepository<Member, Long> {
+   Page<Member> findByName(String username, Pageable pageable);
+}
+````
+````java
+// 예를 들어 이런식으로 사용할 수 있다.
+@GetMapping("/hello")
+public Page<Member> member() {
+   PageRequest request = PageRequest.of(1, 10);
+   return repository.findByName("hello1", request);
+}
+````
+````java
+사용 예시
+
+Pageable page = new PageRequest(1, 20, new Sort...);
+Page<Member> result = memberRepository.findByName("hello", page);
+
+//전체 수
+int total = result.getTotalElements();
+
+//데이터
+List<Member> members = result.getContent();
+
+전체 페이지 수, 다음 페이지 및 페이징을 위한 API 다 구현되어 있음
+````
