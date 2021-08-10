@@ -46,3 +46,27 @@ public List<Tuple> findWbss(){
 > get() 으로 조회하는 방법으로 두 가지가 있다.
 > 1. 첫 번째 파라미터로 프로젝션 대상의 순번 
 > 2. 파라미터는 해당 값의 타입을 명시하는 방법이다.
+
+## Projections 클래스 ##
+- 쿼리의 결과를 특정 객체로 받고 싶을 때는 QueryDSL에서 제공하는 Projections 클래스를 이용하면 된다.
+- Projections 클래스를 이용하여 객체를 생성하는 방법 3가지
+1. 프로퍼티 접근
+2. 필드 직접 접근
+3. 생성자 사용
+
+````java
+package com.edu.querydsl_training.domain;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class MemberDTO {
+
+    private String name;
+    private Long age;
+}
+````
