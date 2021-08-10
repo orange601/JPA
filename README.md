@@ -86,3 +86,20 @@ public void simpleProjectionTest() {
            	});
 }
 ````
+
+2. 필드직접접근방법
+````java
+    @Test
+    public void simpleProjectionTest_2() {
+        QMember m = QMember.member;
+
+        query.select(Projections.fields(MemberDTO.class, m.name, m.age))
+                .from(m)
+                .fetch()
+                .stream()
+                .forEach(memberDTO -> {
+                    log.info("member name : " + memberDTO.getName());
+                    log.info("member age : " + memberDTO.getAge());
+                });
+    }
+````
