@@ -103,3 +103,20 @@ public void simpleProjectionTest() {
                 });
     }
 ````
+	
+3. 생성자를 이용하는 방법
+````java
+    @Test
+    public void simpleProjectionTest_3() {
+        QMember m = QMember.member;
+
+        query.select(Projections.constructor(MemberDTO.class, m.name, m.age))
+                .from(m)
+                .fetch()
+                .stream()
+                .forEach(value -> {
+                    log.info("member name : " + value.getName());
+                    log.info("member age : " + value.getAge());
+                });
+    }
+````
