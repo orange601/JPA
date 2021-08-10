@@ -72,6 +72,7 @@ public class MemberDTO {
 ````
 
 1. 프로퍼티를 이용한 접근 방법
+- 프로퍼티 접근 방법은 Projections.bean() 메서드를 이용하여 객체를 생성할 수 있고, setter() 메서드를 사용해서 값을 주입시켜준다.
 ````java
 @Test
 public void simpleProjectionTest() {
@@ -88,6 +89,8 @@ public void simpleProjectionTest() {
 ````
 
 2. 필드직접접근방법
+- Projections.fields() 메서드를 이용하여 값을 주입한다. 
+- 필드의 접근 지정자를 private로 지정해도 동작하며, setter() 메서드가 없어도 정상적으로 값이 주입된다.
 ````java
     @Test
     public void simpleProjectionTest_2() {
@@ -105,6 +108,8 @@ public void simpleProjectionTest() {
 ````
 	
 3. 생성자를 이용하는 방법
+- Projections.constructor() 메서드를 이용면 된다.   
+- 해당 메서드는 생성자를 이용하여 객체에 값을 주입하며, 지정한 프로젝션과 생성자의 파라미터 순서가 같아야 한다.
 ````java
     @Test
     public void simpleProjectionTest_3() {
