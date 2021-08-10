@@ -70,3 +70,19 @@ public class MemberDTO {
     private Long age;
 }
 ````
+
+1. 프로퍼티를 이용한 접근 방법
+````java
+@Test
+public void simpleProjectionTest() {
+	QMember m = QMember.member;
+        query.select(Projections.bean(MemberDTO.class, m.name, m.age.as("age")))
+                .from(m)
+                .fetch()
+                .stream()
+                .forEach(memberDTO -> {
+                    log.info("member name : " + memberDTO.getName());
+                    log.info("member age : " + memberDTO.getAge());
+           	});
+}
+````
