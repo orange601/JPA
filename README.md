@@ -9,13 +9,14 @@ QueryDSL
 - fetchResults : 조회한 리스트 + 전체 개수를 포함한 QueryResults 반환. count 쿼리가 추가로 실행된다.
 
 ## 프로덕션 ##
-- ntity 전체를 가져오는 방법 말고, 조회 대상을 지정하여 원하는 값만 조회하는 것
-- 프로젝션 대상이 하나일 경우에는 반환되는 타입이 프로젝션 대상의 타입입니다.
+###### entity 전체를 가져오는 방법 말고, 조회 대상을 지정하여 원하는 값만 조회하는 것 ######
+- 프로젝션 대상이 하나일 경우에는 반환되는 타입이 프로젝션 대상의 타입이다.
 ````java
 public List<String> findWbs(){
 	return jpaQueryFactory
-		.select(wbs.pjtCd)
+		.select(wbs.wbsNm)
 		.from(wbs)
 		.fetch();
 }
 ````
+> 위의 결과를 보면 wbs 엔티티의 wbsNm은 String 타입이므로 프로젝션 대상이 하나일 때, List<String> 타입이 조회 결과로 반환되는 것을 볼 수 있다.
