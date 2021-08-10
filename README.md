@@ -20,3 +20,29 @@ public List<String> findWbs(){
 }
 ````
 > 위의 결과를 보면 wbs 엔티티의 wbsNm은 String 타입이므로 프로젝션 대상이 하나일 때, List<String> 타입이 조회 결과로 반환되는 것을 볼 수 있다.
+
+````java
+// 프로젝션 대상이 둘 이상이라면 Tuple 타입을 반환
+public List<Tuple> findWbss(){
+	List<Tuple> list = jpaQueryFactory
+		.select(wbs.wbsNm, wbs.useYn)
+		.from(wbs)
+		.fetch();
+		
+	// Tuple을 조회할 때는 get() 메서드를 이용하면 된다.
+	// get() 으로 조회하는 방법으로 두 가지가 있다.
+	// 1. 첫 번째 파라미터로 프로젝션 대상의 순번 
+	// 2. 파라미터는 해당 값의 타입을 명시하는 방법이다.
+	list.stream()
+        .forEach(tuple -> {
+        	log.info("wbsNm is " + tuple.get(0, String.class));
+        	log.info("useYn is " + tuple.get(wbs.useYn));
+        });
+		
+	return list;
+}	
+````
+> 프로젝션 대상이 둘 이상이라면 Tuple 타입을 반환한다. Tuple을 조회할 때는 get() 메서드를 이용하면 된다.
+> get() 으로 조회하는 방법으로 두 가지가 있다.
+> 1. 첫 번째 파라미터로 프로젝션 대상의 순번 
+> 2. 파라미터는 해당 값의 타입을 명시하는 방법이다.
