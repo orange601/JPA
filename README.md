@@ -144,7 +144,6 @@ public Page<Member> member() {
 ````
 ````java
 사용 예시
-
 Pageable page = new PageRequest(1, 20, new Sort...);
 Page<Member> result = memberRepository.findByName("hello", page);
 
