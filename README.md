@@ -45,6 +45,11 @@ public class AccountCustomRepositoryImpl extends QuerydslRepositorySupport imple
 
 출처: https://github.com/cheese10yun/spring-jpa-best-practices/blob/master/doc/step-15.md
 
+### 2. QuerydslPredicateExecutor를 이용한 확장 ###
+- findById, existsById 같은 유니크 값을 메서드로 표현하는 것이 가독성 및 생산성에 좋다.
+- 유사한 쿼리가 필요해지면 쿼리 메서드를 지속적으로 추가해야 하는 단점이 있다.
+
+
 ## fetch ##
 - fetch : 조회 대상이 여러건일 경우. 컬렉션 반환
 - fetchOne : 조회 대상이 1건일 경우(1건 이상일 경우 에러). generic에 지정한 타입으로 반환
