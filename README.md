@@ -1,5 +1,46 @@
-# JPA
-QueryDSL
+# Querydsl #
+
+
+## Querydsl Custom ##
+- JpaRepository를 이용해서 복잡한 쿼리는 작성하기가 어렵다.
+- findById, existsById 같은 유니크 값을 메서드로 표현하는 것이 가독성 및 생산성에 좋다.
+- @Query을 이용해서 JPQL을 작성하는 것도 방법이지만, **type safe** 하지 않아 유지 보수하기 어려운 단점이 있다.
+- Querydsl를 통해서 해결할 수 있지만 조회용 DAO 클래스 들이 남발되어 다양한 DAO를 DI 받아 비즈니스 로직을 구현하게 되는 현상이 발생하게 된다.
+
+### 1. Custom-Repository를 이용한 확장 ###
+- impl 네이밍 규칙은 Repository Interface + Impl 이어야 한다. 그래야 JPA가 사용자 정의 구현 클래스로 인식할 수 있다. 
+
+````java
+public interface AccountRepository extends JpaRepository<Account, Long>, AccountCustomRepository {
+    Account findByEmail(Email email);
+    boolean existsByEmail(Email email);
+}
+
+public interface AccountCustomRepository {
+    List<Account> findRecentlyRegistered(int limit);
+}
+
+@Transactional(readOnly = true)
+public class AccountCustomRepositoryImpl extends QuerydslRepositorySupport implements AccountCustomRepository {
+
+    public AccountCustomRepositoryImpl() {
+        super(Account.class);
+    }
+
+    @Override
+    // 최근 가입한 limit 갯수 만큼 유저 리스트를 가져온다
+    public List<Account> findRecentlyRegistered(int limit) {
+        final QAccount account = QAccount.account;
+        return from(account)
+                .limit(limit)
+                .orderBy(account.createdAt.desc())
+                .fetch();
+    }
+}
+````
+- AccountRepository는 AccountCustomRepository, JpaRepository를 구현하고 있다.
+- 그러므로 findById, save 등의 메서드를 정의하지 않고도 사용 가능했듯이 AccountCustomRepository에 있는 메서드도 AccountRepository에서 그대로 사용 가능하다.
+- **핵심: AccountCustomRepositoryImpl에게 복잡한 쿼리는 구현을 시키고 AccountRepository 통해서 마치 JpaRepository를 사용하는 것처럼 편리하게 사용할 수 있다.**
 
 ## fetch ##
 - fetch : 조회 대상이 여러건일 경우. 컬렉션 반환
