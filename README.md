@@ -1,7 +1,7 @@
 # Querydsl #
 
 
-## Querydsl Custom ##
+## Querydsl을 이용한 확장 ##
 - findById, existsById 같은 유니크 값을 메서드로 표현하는 것이 가독성 및 생산성에 좋다.
 - 하지만, JpaRepository를 이용해서 복잡한 쿼리는 작성하기가 어렵다.
 - @Query을 이용해서 JPQL을 작성하는 것도 방법이지만, **type safe** 하지 않아 유지 보수하기 어려운 단점이 있다.
