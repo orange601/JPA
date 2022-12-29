@@ -2,8 +2,8 @@
 
 
 ## Querydsl Custom ##
-- JpaRepository를 이용해서 복잡한 쿼리는 작성하기가 어렵다.
 - findById, existsById 같은 유니크 값을 메서드로 표현하는 것이 가독성 및 생산성에 좋다.
+- 하지만, JpaRepository를 이용해서 복잡한 쿼리는 작성하기가 어렵다.
 - @Query을 이용해서 JPQL을 작성하는 것도 방법이지만, **type safe** 하지 않아 유지 보수하기 어려운 단점이 있다.
 - Querydsl를 통해서 해결할 수 있지만 조회용 DAO 클래스 들이 남발되어 다양한 DAO를 DI 받아 비즈니스 로직을 구현하게 되는 현상이 발생하게 된다.
 
