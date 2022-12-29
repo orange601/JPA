@@ -40,7 +40,9 @@ public class AccountCustomRepositoryImpl extends QuerydslRepositorySupport imple
 ````
 - AccountRepository는 AccountCustomRepository, JpaRepository를 구현하고 있다.
 - 그러므로 findById, save 등의 메서드를 정의하지 않고도 사용 가능했듯이 AccountCustomRepository에 있는 메서드도 AccountRepository에서 그대로 사용 가능하다.
-- **핵심: AccountCustomRepositoryImpl에게 복잡한 쿼리는 구현을 시키고 AccountRepository 통해서 마치 JpaRepository를 사용하는 것처럼 편리하게 사용할 수 있다.**
+- **핵심: AccountCustomRepositoryImpl에게 복잡한 쿼리를 구현을 시키고 AccountRepository 통해서 마치 JpaRepository를 사용하는 것처럼 편리하게 사용할 수 있다.**
+
+출처: https://github.com/cheese10yun/spring-jpa-best-practices/blob/master/doc/step-15.md
 
 ## fetch ##
 - fetch : 조회 대상이 여러건일 경우. 컬렉션 반환
