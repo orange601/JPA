@@ -47,8 +47,37 @@ public class AccountCustomRepositoryImpl extends QuerydslRepositorySupport imple
 
 ### 2. QuerydslPredicateExecutor를 이용한 확장 ###
 - findById, existsById 같은 유니크 값을 메서드로 표현하는 것이 가독성 및 생산성에 좋다.
-- 유사한 쿼리가 필요해지면 쿼리 메서드를 지속적으로 추가해야 하는 단점이 있다.
+- 하지만, 유사한 쿼리가 필요해지면 쿼리 메서드를 지속적으로 추가해야 하는 단점이 있다.
+- QuerydslPredicateExecutor를 사용하면 매우 효과적이다.
 
+````java
+// springframework-querydsl 안에 있음
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+public interface AccountRepository extends JpaRepository<Account, Long>, AccountSupportRepository, QuerydslPredicateExecutor<Account> {
+        ...
+}
+````
+
+````java
+@DataJpaTest
+@RunWith(SpringRunner.class)
+public class AccountRepositoryTest {
+  @Autowired
+  private AccountRepository accountRepository;
+  private final QAccount qAccount = QAccount.account;
+  @Test
+  public void predicate_test_001() {
+    //given
+    final Predicate predicate = qAccount.email.eq(Email.of("test001@test.com"));
+    //when
+    final boolean exists = accountRepository.exists(predicate);
+    //then
+    assertThat(exists).isTrue();
+  }
+}
+````
+
+출처: https://github.com/cheese10yun/spring-jpa-best-practices/blob/master/doc/step-16.md
 
 ## fetch ##
 - fetch : 조회 대상이 여러건일 경우. 컬렉션 반환
