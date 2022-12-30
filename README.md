@@ -51,7 +51,7 @@ public class AccountCustomRepositoryImpl extends QuerydslRepositorySupport imple
 - QuerydslPredicateExecutor를 사용하면 매우 효과적이다.
 
 ````java
-// springframework-querydsl 안에 있음
+// springframework-querydsl
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 public interface AccountRepository extends JpaRepository<Account, Long>, AccountSupportRepository, QuerydslPredicateExecutor<Account> {
         ...
