@@ -4,6 +4,63 @@
 - Request 경우 Entity를 사용하게된다면 원치 않은 데이터를 컨트롤러를 통해 넘겨받을 수 있게되고, 그로인한 변경이 발생할 수 있다.
 - Response 경우, 비밀번호 같은 민감한정보를 포함해 모든 정보가 노출 된다.
 
+#### DTO Sample ####
+````java
+public class AccountDto {
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class SignUpReq {
+        private String email;
+        private String address2;
+        private String zip;
+
+        @Builder
+        public SignUpReq(String email, String fistName, String lastName, String password, String address1, String address2, String zip) {
+            this.email = email;
+            this.address2 = address2;
+            this.zip = zip;
+        }
+
+        public Account toEntity() {
+            return Account.builder()
+                    .email(this.email)
+                    .address2(this.address2)
+                    .zip(this.zip)
+                    .build();
+        }
+
+    }
+
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class MyAccountReq {
+        private String address1;
+        private String address2;
+        private String zip;
+
+        @Builder
+        public MyAccountReq(String address1, String address2, String zip) {
+            this.address1 = address1;
+            this.address2 = address2;
+            this.zip = zip;
+        }
+    }
+
+    @Getter
+    public static class Res {
+        private String email;
+        private String address2;
+        private String zip;
+
+        public Res(Account account) {
+            this.email = account.getEmail();
+            this.address2 = account.getAddress2();
+            this.zip = account.getZip();
+        }
+    }
+}
+````
+
 
 # Querydsl #
 Querydsl
