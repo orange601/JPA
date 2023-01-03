@@ -41,9 +41,9 @@ public class AccountCustomRepositoryImpl extends QuerydslRepositorySupport imple
 - AccountRepository는 AccountCustomRepository, JpaRepository를 구현하고 있다.
 - 그러므로 findById, save 등의 메서드를 정의하지 않고도 사용 가능했듯이 AccountCustomRepository에 있는 메서드도 AccountRepository에서 그대로 사용 가능하다.
 - **핵심: AccountCustomRepositoryImpl에게 복잡한 쿼리를 구현을 시키고 AccountRepository 통해서 마치 JpaRepository를 사용하는 것처럼 편리하게 사용할 수 있다.**
-- SRP와 OCP에 어긋나지도 않는다.
 
 출처: https://github.com/cheese10yun/spring-jpa-best-practices/blob/master/doc/step-15.md
+
 
 ### 2. QuerydslPredicateExecutor를 이용한 확장 ###
 - findById, existsById 같은 유니크 값을 메서드로 표현하는 것이 가독성 및 생산성에 좋다.
