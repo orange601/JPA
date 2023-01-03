@@ -59,6 +59,8 @@ public interface AccountRepository extends JpaRepository<Account, Long>, Account
 ````
 
 ````java
+import com.querydsl.core.types.Predicate;
+
 @DataJpaTest
 @RunWith(SpringRunner.class)
 public class AccountRepositoryTest {
