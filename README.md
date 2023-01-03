@@ -21,7 +21,9 @@ public interface AccountCustomRepository {
 }
 
 @Transactional(readOnly = true)
-public class AccountCustomRepositoryImpl extends QuerydslRepositorySupport implements AccountCustomRepository {
+public class AccountCustomRepositoryImpl 
+	extends QuerydslRepositorySupport 
+	implements AccountCustomRepository {
 
     public AccountCustomRepositoryImpl() {
         super(Account.class);
