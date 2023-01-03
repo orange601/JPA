@@ -1,3 +1,10 @@
+# JPA #
+
+## DTO 클래스를 이용한 Request, Response 를 사용해야 한다. ##
+- Request 경우 Entity를 사용하게된다면 원치 않은 데이터를 컨트롤러를 통해 넘겨받을 수 있게되고, 그로인한 변경이 발생할 수 있다.
+- Response 경우, 비밀번호 같은 민감한정보를 포함해 모든 정보가 노출 된다.
+
+
 # Querydsl #
 Querydsl
 
