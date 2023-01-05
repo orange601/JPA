@@ -1,7 +1,7 @@
 # JPA #
 #### ORM(Object-Relational Mapping) ####
-- 우리가 일반 적으로 알고 있는 애플리케이션 Class와 RDB(Relational DataBase)의 테이블을 매핑(연결)한다는 뜻
-- 기술적으로는 어플리케이션의 객체를 RDB 테이블에 자동으로 영속화 해주는 것
+- Object-Relational Mapping 의 약자
+- 이름 그대로 객체(Object)와 관계형 데이터(Relational data)를 매핑하기 위한 기술이다. 
 
 ## DTO 클래스를 이용한 Request, Response 를 사용해야 한다. ##
 - Request 경우 Entity를 사용하게된다면 원치 않은 데이터를 컨트롤러를 통해 넘겨받을 수 있게되고, 그로인한 변경이 발생할 수 있다.
