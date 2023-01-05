@@ -1,6 +1,5 @@
 # JPA #
 #### ORM(Object-Relational Mapping) ####
-- Object-Relational Mapping 의 약자
 - 이름 그대로 객체(Object)와 관계형 데이터(Relational data)를 매핑하기 위한 기술이다. 
 
 ## DTO 클래스를 이용한 Request, Response 를 사용해야 한다. ##
