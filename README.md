@@ -22,10 +22,12 @@ values ('chd', 21),
 ````java
 @Test
 void service() {
+    long startTime = System.currentTimeMillis();
+    
     for (int i = 0; i < 1000; i++) {
         bulkService.bulkService();
     }
-    long startTime = System.currentTimeMillis();
+    
     System.out.println("elapsed = " + (System.currentTimeMillis() - startTime) + "ms"); // 7531ms
 }
 ````
@@ -56,10 +58,11 @@ public <S extends T> S save(S entity) {
 - for 문을 도는 부분을 @Tranasactional로 묶어서 트랜잭션 전파(propagation)을 통해 save 한다면 save시 마다 트랜잭션을 새로 열지 않을것이며 성능개선을 할 수 있을 것으로 판단
 ````java
 @Test
-void service() {    
-    bulkService.bulkService();
-    
+void service() {
     long startTime = System.currentTimeMillis();
+    
+    bulkService.bulkService();    
+    
     System.out.println("elapsed = " + (System.currentTimeMillis() - startTime) + "ms"); // 4255ms
 }
 ````
@@ -76,10 +79,11 @@ public void bulkService() {
 ### 1-2. @Transaction 안에서 saveAll ###
 ````java
 @Test
-void service() {    
-    bulkService.bulkService();
-    
+void service() { 
     long startTime = System.currentTimeMillis();
+    
+    bulkService.bulkService();    
+    
     System.out.println("elapsed = " + (System.currentTimeMillis() - startTime) + "ms"); // 2850ms
 }
 ````
