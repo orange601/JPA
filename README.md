@@ -2,7 +2,7 @@
 #### ORM(Object-Relational Mapping) ####
 - 객체(Object)와 관계형 데이터(Relational data)를 매핑하기 위한 기술이다. 
 
-## JPA-Bulk insert ##
+## 1. Bulk Insert ##
 - RDBMS에서 bulk insert란 한번의 쿼리로 여러건의 데이터를 insert 할 수 있는 기능을 제공하는 것이다.
 - 한번의 쿼리로 여러건의 데이터를 한번에 insert 할 수 있기 때문에 데이터베이스와 어플리케이션 사이의 통신에 들어가는 비용을 줄여주어 성능상 이득을 얻는다.
 - 하지만 bulk insert를 원하는 테이블에서 auto_increment를 사용하고 있다면 bulk insert는 JPA를 통해서는 해결할 수 없다. 
@@ -12,6 +12,31 @@ insert into user (name, age)
 values ('chd', 21),
        ('cha', 26),
        ('lolo', 15);
+````
+
+### 1-1. save 밖에서 for을 통해 insert ###
+````java
+@Test
+void bulkService3() {
+    long startTime = System.currentTimeMillis();
+
+    for (int i = 0; i < 1000; i++) {
+        bulkService.bulkService();
+    }
+
+    System.out.println("elapsed = " + (System.currentTimeMillis() - startTime) + "ms"); // 7531ms
+}
+````
+````java
+public void bulkService() {
+    CreateReviewReq createReviewReq = new CreateReviewReq(
+            "hello + ",
+            new ReviewScore(1, 2, 3, 4, 5, 6)
+    );
+
+    Review review = reviewMapper.buildReview(1, 1, createReviewReq);
+    reviewRepositoryV1.save(review);
+}
 ````
 
 ## DTO 클래스를 이용한 Request, Response 를 사용해야 한다. ##
