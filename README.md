@@ -36,9 +36,9 @@ public void bulkService() {
 }
 ````
 
-- save를 할 때 마다 트랜잭션을 잡는 행위를 하기 때문에 이러한 경과시간을 보여주었다는 것을 확인할 수 있다.
 ````java
-// JPA save의 내부 코드에 @Transactional이 들어가 있는 것을 확인
+// JPA save의 내부 코드에 @Transactional이 들어가 있다.
+// save를 할 때 마다 트랜잭션을 잡는 행위를 하기 때문에 위 같은 경과시간을 보여주었다는 것을 확인할 수 있다.
 @Transactional
 @Override
 public <S extends T> S save(S entity) {
