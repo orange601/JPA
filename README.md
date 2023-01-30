@@ -15,27 +15,23 @@ values ('chd', 21),
 ````
 
 ### 1-1. save 밖에서 for을 통해 insert ###
+- 프레임워크를 추가하거나 바꾸지 못 하고 JPA 해결해야되는 상황이라면 어쩔 수 없이 다수의 insert 쿼리를 통해 할 수 밖에 없다.
+- 그래도 어떤 방법이 그나마 빠르게 이를 수행할 수 있을지 비교한다.
+
 ````java
 @Test
-void bulkService3() {
-    long startTime = System.currentTimeMillis();
-
+void service() {
     for (int i = 0; i < 1000; i++) {
         bulkService.bulkService();
     }
-
+    long startTime = System.currentTimeMillis();
     System.out.println("elapsed = " + (System.currentTimeMillis() - startTime) + "ms"); // 7531ms
 }
 ````
 ````java
 public void bulkService() {
-    CreateReviewReq createReviewReq = new CreateReviewReq(
-            "hello + ",
-            new ReviewScore(1, 2, 3, 4, 5, 6)
-    );
-
-    Review review = reviewMapper.buildReview(1, 1, createReviewReq);
-    reviewRepositoryV1.save(review);
+    ...
+    SampleRepository.save(review);
 }
 ````
 
