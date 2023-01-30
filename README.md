@@ -31,7 +31,7 @@ void service() {
 ````java
 public void bulkService() {
     ...
-    SampleRepository.save(review);
+    sampleRepository.save(review);
 }
 ````
 
@@ -47,6 +47,26 @@ public <S extends T> S save(S entity) {
         return entity;
     } else {
         return em.merge(entity);
+    }
+}
+````
+
+### 1-2. Transactional 을 통한 save ###
+````java
+@Test
+void service() {    
+    bulkService.bulkService();
+    
+    long startTime = System.currentTimeMillis();
+    System.out.println("elapsed = " + (System.currentTimeMillis() - startTime) + "ms"); // 4255ms
+}
+````
+````java
+@Transactional
+public void bulkService() {
+    for (int i = 0; i < 1000; i++) {
+        ...
+        sampleRepository.save(review);
     }
 }
 ````
