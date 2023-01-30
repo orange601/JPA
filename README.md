@@ -7,8 +7,7 @@
 - 한번의 쿼리로 여러건의 데이터를 한번에 insert 할 수 있기 때문에 데이터베이스와 어플리케이션 사이의 통신에 들어가는 비용을 줄여주어 성능상 이득을 얻는다.
 - 하지만 bulk insert를 원하는 테이블에서 auto_increment를 사용하고 있다면 bulk insert는 JPA를 통해서는 해결할 수 없다. 
 - 프레임워크를 추가하거나 바꾸지 못 하고 JPA 해결해야되는 상황이라면 어쩔 수 없이 다수의 insert 쿼리를 통해 할 수 밖에 없다.
-- 그래도 어떤 방법이 그나마 빠르게 이를 수행할 수 있을지 비교한다.
-출처: https://sabarada.tistory.com/195
+- 그래도 어떤 방법이 그나마 빠르게 이를 수행할 수 있을지 비교한다. 출처: https://sabarada.tistory.com/195
 
 ````java
 // bulk insert example
