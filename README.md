@@ -2,6 +2,17 @@
 #### ORM(Object-Relational Mapping) ####
 - 객체(Object)와 관계형 데이터(Relational data)를 매핑하기 위한 기술이다. 
 
+## JPA-Bulk insert ##
+- RDBMS에서 bulk insert란 한번의 쿼리로 여러건의 데이터를 insert 할 수 있는 기능을 제공하는 것이다.
+- 한번의 쿼리로 여러건의 데이터를 한번에 insert 할 수 있기 때문에 데이터베이스와 어플리케이션 사이의 통신에 들어가는 비용을 줄여주어 성능상 이득을 얻는다.
+````java
+// 예
+insert into user (name, age)
+values ('chd', 21),
+       ('cha', 26),
+       ('lolo', 15);
+````
+
 ## DTO 클래스를 이용한 Request, Response 를 사용해야 한다. ##
 - Request 경우 Entity를 사용하게된다면 원치 않은 데이터를 컨트롤러를 통해 넘겨받을 수 있게되고, 그로인한 변경이 발생할 수 있다.
 - Response 경우, 비밀번호 같은 민감한정보를 포함해 모든 정보가 노출 된다.
