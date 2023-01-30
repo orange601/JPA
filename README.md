@@ -35,6 +35,23 @@ public void bulkService() {
 }
 ````
 
+
+- save를 할 때 마다 트랜잭션을 잡는 행위를 하기 때문에 이러한 경과시간을 보여주었다는 것을 확인할 수 있다.
+````java
+// JPA save의 내부 코드에 @Transactional이 들어가 있는 것을 확인
+@Transactional
+@Override
+public <S extends T> S save(S entity) {
+
+    if (entityInformation.isNew(entity)) {
+        em.persist(entity);
+        return entity;
+    } else {
+        return em.merge(entity);
+    }
+}
+````
+
 ## DTO 클래스를 이용한 Request, Response 를 사용해야 한다. ##
 - Request 경우 Entity를 사용하게된다면 원치 않은 데이터를 컨트롤러를 통해 넘겨받을 수 있게되고, 그로인한 변경이 발생할 수 있다.
 - Response 경우, 비밀번호 같은 민감한정보를 포함해 모든 정보가 노출 된다.
