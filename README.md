@@ -108,6 +108,18 @@ public void bulkService() {
 - @Transactional을 통해 트랜잭션이 관리될 수 있으므로, 현실적으로 가장 나은 방법
 
 ````java
+public interface SampleRepository extends JpaRepository<Sample, String>, SampleRepositoryJdbc {
+}
+````
+
+````java
+public interface SampleRepositoryJdbc {
+	void batchInsert(List<User> users);
+
+}
+````
+
+````java
 @Repository
 public class SampleRepositoryJdbcImpl implements SampleRepositoryJdbc {
 	private JdbcTemplate jdbcTemplate;
