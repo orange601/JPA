@@ -6,7 +6,7 @@
 - RDBMS에서 bulk insert란 한번의 쿼리로 여러건의 데이터를 insert 할 수 있는 기능을 제공하는 것이다.
 - 한번의 쿼리로 여러건의 데이터를 한번에 insert 할 수 있기 때문에 데이터베이스와 어플리케이션 사이의 통신에 들어가는 비용을 줄여주어 성능상 이득을 얻는다.
 ````java
-// 예
+// example
 insert into user (name, age)
 values ('chd', 21),
        ('cha', 26),
