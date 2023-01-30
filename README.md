@@ -76,7 +76,7 @@ public void bulkService() {
 }
 ````
 
-### 1-2. @Transaction 안에서 saveAll ###
+### 1-3. @Transaction 안에서 saveAll ###
 ````java
 @Test
 void service() { 
@@ -103,6 +103,40 @@ public void bulkService() {
 }
 ````
 
+### 1-4. Spring Data JDBC의 batchUpdate()를 활용 ###
+- Spring Data JDBC는 Spring Data JPA와 함께 혼용해서 사용
+- @Transactional을 통해 트랜잭션이 관리될 수 있으므로, 현실적으로 가장 나은 방법
+
+````java
+@Repository
+public class SampleRepositoryJdbcImpl implements SampleRepositoryJdbc {
+	private JdbcTemplate jdbcTemplate;
+
+	public SampleRepositoryJdbcImpl(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	public void batchInsert(List<User> users) {
+		jdbcTemplate.batchUpdate(
+				"insert into SP_SAMPLE(ID, PW) "
+				+ "values(?, ?)",
+				 new BatchPreparedStatementSetter() {
+					@Override
+					public void setValues(PreparedStatement ps, int i) throws SQLException {
+						User user = users.get(i);
+						ps.setString(1, user.getId());
+						ps.setString(2, user.getPw());
+					}
+
+					@Override
+					public int getBatchSize() {
+						return users.size();
+					}
+				});
+	}
+
+}
+````
 
 ## DTO 클래스를 이용한 Request, Response 를 사용해야 한다. ##
 - Request 경우 Entity를 사용하게된다면 원치 않은 데이터를 컨트롤러를 통해 넘겨받을 수 있게되고, 그로인한 변경이 발생할 수 있다.
