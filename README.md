@@ -53,6 +53,7 @@ public <S extends T> S save(S entity) {
 ````
 
 ### 1-2. Transactional 을 통한 save ###
+- for 문을 도는 부분을 @Tranasactional로 묶어서 트랜잭션 전파(propagation)을 통해 save 한다면 save시 마다 트랜잭션을 새로 열지 않을것이며 성능개선을 할 수 있을 것으로 판단
 ````java
 @Test
 void service() {    
