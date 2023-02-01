@@ -213,7 +213,20 @@ public class AccountDto {
 
 
 # Querydsl #
-Querydsl
+Querydsl - gradle 설정
+
+## 오래된 plugin ##
+- com.ewerk.gradle.plugins.querydsl
+- Qclass 생성을 위해 사용하는 Plugin
+- 2018년 7월 이후 업데이트가 없다. 1.0.10 버전이 2023년 2월 현재 최신버전이다.
+````gradle
+plugins {
+	id 'java'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+}
+````
+
+
 
 ## Querydsl을 이용한 확장 ##
 - findById, existsById 같은 유니크 값을 메서드로 표현하는 것이 가독성 및 생산성에 좋다.
