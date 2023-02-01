@@ -215,10 +215,10 @@ public class AccountDto {
 # Querydsl #
 Querydsl - gradle 설정
 
-## 오래된 plugin ##
+## 오래된 Plugin ##
 - com.ewerk.gradle.plugins.querydsl
 - Qclass 생성을 위해 사용하는 Plugin
-- 2018년 7월 이후 업데이트가 없다. 1.0.10 버전이 2023년 2월 현재 최신버전이다.
+- 2018년 7월 이후 업데이트가 없다. 1.0.10 버전이 2023년 2월 현재 최신버전이다. [메이븐에서버전확인](https://mvnrepository.com/artifact/com.ewerk.gradle.plugins.querydsl/com.ewerk.gradle.plugins.querydsl.gradle.plugin)
 ````gradle
 plugins {
 	id 'java'
