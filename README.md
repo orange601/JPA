@@ -5,6 +5,9 @@
 - ORM 기술에 대한 표준 명세가 바로 JPA이다.
 - JPA 표준을 구현한 대표적인 프레임워크가 Hibernate이다.
 
+### Hibernate ###
+- JPA를 사용하기 위해서 JPA를 구현한 ORM 프레임워크 중 하나이다. ORM 프레임워크 중 가장 많이 사용되며, JPA 인터페이스의 실제 구현부를 담당한다.
+
 ### SQL Mapper vs ORM ###
 - SQL Mapper는 모두가 흔히 알고있는 Mybatis의 프레임워크다. SQL Mapper는 SQL문으로 직접 DB를 조작한다.
 - ORM은 객체와 DB의 데이터를 자동으로 매핑해주기 때문에 직접 SQL문을 작성하지 않는다.
