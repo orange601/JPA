@@ -1,7 +1,7 @@
 # JPA #
 ### ORM(Object-Relational Mapping) ###
 - 객체(Object)와 관계형 데이터(Relational data)를 매핑하기 위한 기술이다. 
-- 쉽게 말해 객체와 테이블을 매핑시켜주는 프레임워크
+- 쉽게 말해 객체와 테이블을 매핑시켜주는 프레임워크이다.
 - ORM 기술에 대한 표준 명세가 바로 JPA이다.
 - JPA 표준을 구현한 대표적인 프레임워크가 Hibernate이다.
 
