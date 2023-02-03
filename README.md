@@ -12,6 +12,10 @@
 - SQL Mapper는 모두가 흔히 알고있는 Mybatis의 프레임워크다. SQL Mapper는 SQL문으로 직접 DB를 조작한다.
 - ORM은 객체와 DB의 데이터를 자동으로 매핑해주기 때문에 직접 SQL문을 작성하지 않는다.
 
+### @Entity ###
+- javax.persistence.Entity 
+- org.hibernate.annotations.Entity (deprecated )
+
 ## 1. Bulk Insert ##
 - RDBMS에서 bulk insert란 한번의 쿼리로 여러건의 데이터를 insert 할 수 있는 기능을 제공하는 것이다.
 - 한번의 쿼리로 여러건의 데이터를 한번에 insert 할 수 있기 때문에 데이터베이스와 어플리케이션 사이의 통신에 들어가는 비용을 줄여주어 성능상 이득을 얻는다.
