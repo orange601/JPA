@@ -1,6 +1,13 @@
 # JPA #
-#### ORM(Object-Relational Mapping) ####
+### ORM(Object-Relational Mapping) ###
 - 객체(Object)와 관계형 데이터(Relational data)를 매핑하기 위한 기술이다. 
+- 쉽게 말해 객체와 테이블을 매핑시켜주는 프레임워크
+- ORM 기술에 대한 표준 명세가 바로 JPA이다.
+- JPA 표준을 구현한 대표적인 프레임워크가 Hibernate이다.
+
+### SQL Mapper vs ORM ###
+- SQL Mapper는 모두가 흔히 알고있는 Mybatis의 프레임워크다. SQL Mapper는 SQL문으로 직접 DB를 조작한다.
+- ORM은 객체와 DB의 데이터를 자동으로 매핑해주기 때문에 직접 SQL문을 작성하지 않는다.
 
 ## 1. Bulk Insert ##
 - RDBMS에서 bulk insert란 한번의 쿼리로 여러건의 데이터를 insert 할 수 있는 기능을 제공하는 것이다.
