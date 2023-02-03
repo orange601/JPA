@@ -13,7 +13,15 @@
 - ORM은 객체와 DB의 데이터를 자동으로 매핑해주기 때문에 직접 SQL문을 작성하지 않는다.
 
 ### @Entity ###
-- javax.persistence.Entity 
+- javax.persistence.Entity
+````
+// spring boot
+	- spring-boot-starter-parent [2.1.0.RELEASE] (higher)
+		+ spring-boot-starter-data-jpa [2.1.0.RELEASE]
+			- hibernate-core [5.3.7.Final]
+			- javax.persistence-api [2.2]
+````
+
 - org.hibernate.annotations.Entity (deprecated )
 
 ## 1. Bulk Insert ##
