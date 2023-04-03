@@ -30,7 +30,7 @@
 			- javax.persistence-api [2.2]
 ````
 
-- org.hibernate.annotations.Entity (deprecated )
+- org.hibernate.annotations.Entity (deprecated되었으니 주의)
 
 ## 1. Bulk Insert ##
 - RDBMS에서 bulk insert란 한번의 쿼리로 여러건의 데이터를 insert 할 수 있는 기능을 제공하는 것이다.
