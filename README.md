@@ -240,3 +240,28 @@ public class AccountDto {
     }
 }
 ````
+
+## 영속성 관리 ##
+- 매핑한 엔티티를 엔티티 매니저를 통해 어떻게 사용하는지
+
+### 엔티티 매니저 팩토리 ###
+- 만드는 비용이 크다.
+- 한 개만 만들어서 어플리케이션 전체에서 공유하도록 설계.
+- 여러 스레드가 동시에 접근해도 안전, 서로 다른 스레드 간 공유 가능.
+
+````java
+// 비용이 아주 많이 든다.
+//엔티티 매니저 팩토리 생성
+EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpabook");
+````
+
+
+### EntityManger 생성 ##
+- 여러 스레드가 동시에 접근하면 동시성 문제 발생
+- 스레드간 절대 공유하면 안된다.
+- 데이터베이스 연결이 필요한 시점까지 커넥션을 얻지 않는다.
+
+````java
+// 엔티티 매니저 생성, 비용이 거의 안든다.
+EntityManager em = emf.createEntityManager(); //엔티티 매니저 생성
+````java
