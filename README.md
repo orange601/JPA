@@ -23,7 +23,11 @@
 ### 영속성 컨텍스트란? ###
 - 엔티티를 영구저장하는 환경
 - 애플리케이션과 데이터베이스 사이에서 객체를 보관하는 가상의 데이터베이스 같은 역할을 한다. 
+
+### EntityManagerFactory와 EntityManager ###
 - 엔티티 매니저를 통해 엔티티를 저장하거나 조회하면 엔티티 매니저는 영속성 컨텍스트에 엔티티를 보관하고 관리한다.
+- EntityManagerFactory는 여러 스레드에서 동시에 접근해도 안전하지만, 생성하는 비용이 상당히 크다.
+- 따라서 EntityManagerFactory에서 요청이 올 때마다 생성 비용이 거의 없는 EntityManager를 생성한다.
 
 ### @Entity ###
 - javax.persistence.Entity
@@ -269,4 +273,4 @@ EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpabook");
 ````java
 // 엔티티 매니저 생성, 비용이 거의 안든다.
 EntityManager em = emf.createEntityManager(); //엔티티 매니저 생성
-````java
+````
