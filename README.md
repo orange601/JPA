@@ -30,7 +30,7 @@ EntityManager.persist(entity);
 ````
 
 ### EntityManagerFactory와 EntityManager ###
-- EntityManagerFactory는 여러 스레드에서 동시에 접근해도 안전하지만, 생성하는 비용이 상당히 크다.
+- EntityManagerFactory는 여러 스레드에서 동시에 접근해도 안전하지만,  생성되는 시점에 DB 커넥션 풀을 생성하기에 생성 비용이 상당히 크다.
 - 따라서 EntityManagerFactory에서 요청이 올 때마다 생성 비용이 거의 없는 EntityManager를 생성한다.
 
 <img src = "https://user-images.githubusercontent.com/24876345/236078788-10f55fc1-a120-4d1a-9609-5f6221fb44a4.png" width="700px">
