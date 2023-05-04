@@ -25,6 +25,10 @@
 - 애플리케이션과 데이터베이스 사이에서 객체를 보관하는 가상의 데이터베이스 같은 역할을 한다. 
 - EntityManager를 통해 엔티티를 저장하거나 조회하면 EntityManager는 **영속성 컨텍스트**에 엔티티를 보관하고 관리한다.
 
+````java
+EntityManager.persist(entity);
+````
+
 ### EntityManagerFactory와 EntityManager ###
 - EntityManagerFactory는 여러 스레드에서 동시에 접근해도 안전하지만, 생성하는 비용이 상당히 크다.
 - 따라서 EntityManagerFactory에서 요청이 올 때마다 생성 비용이 거의 없는 EntityManager를 생성한다.
