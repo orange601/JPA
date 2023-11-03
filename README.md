@@ -56,6 +56,58 @@ EntityManager.persist(entity);
 
 - org.hibernate.annotations.Entity (deprecated되었으니 주의)
 
+
+## SAVE 동작방식 ##
+
+````java
+SimpleJpaRepository.java
+
+/*
+ * (non-Javadoc)
+ * @see org.springframework.data.repository.CrudRepository#save(java.lang.Object)
+ */
+@Transactional
+@Override
+public <S extends T> S save(S entity) {
+
+	if (entityInformation.isNew(entity)) {
+		em.persist(entity);
+		return entity;
+	} else {
+		return em.merge(entity);
+	}
+}
+````
+
+### persist ###
+- persist는 insert 문을 바로 호출
+
+### merge ###
+- select 후  식별자가 있으면 Update, 없으면 insert 문 호
+
+### isNew 함수 실행 ###
+1. 식별자가 null 또는 0일 경우 new 상태로 인식
+	- Long 타입과 같이 Wrapper 일 경우 null 을 newState 인식하고, int 와 같이 Primitive 일 경우 new 상태로 인식
+2. Entity 필드에 @Version 필드가 null 이면 new 로 간주
+
+3. Persistable interface 를 구현
+````java
+@Entity
+public class Test implements Persistable<Long> {
+    @Override
+    public Long getId() {
+        return null;
+    }
+
+    @Override
+    public boolean isNew() {
+        return false;
+    }
+}
+````
+출처: https://velog.io/@rainmaker007/spring-data-jpa-save-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC
+
+
 ## 0. bulk update ##
 - https://brunch.co.kr/@purpledev/32
 
