@@ -83,7 +83,7 @@ public <S extends T> S save(S entity) {
 - persist는 insert 문을 바로 호출
 
 ### merge ###
-- select 후  식별자가 있으면 Update, 없으면 insert 문 호
+- select 후  식별자가 있으면 Update, 없으면 insert 문 호출
 
 ### isNew 함수 실행 ###
 1. 식별자가 null 또는 0일 경우 new 상태로 인식
