@@ -29,6 +29,8 @@
 EntityManager.persist(entity);
 ````
 
+영속성뜻: 영원히 계속되는 성질이나 능력 from naver 사전
+
 ### EntityManagerFactory와 EntityManager ###
 - EntityManagerFactory는 여러 스레드에서 동시에 접근해도 안전하지만,  생성되는 시점에 DB 커넥션 풀을 생성하기에 생성 비용이 상당히 크다.
 - 따라서 EntityManagerFactory에서 요청이 올 때마다 생성 비용이 거의 없는 EntityManager를 생성한다.
